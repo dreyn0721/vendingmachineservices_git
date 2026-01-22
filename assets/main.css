@@ -1,0 +1,100 @@
+main.main-content{
+    min-height: 800px;
+    padding-bottom: 50px;
+}
+
+
+.navbar-brand img{
+    max-width: 250px;
+}
+.main-nav-container .main-nav-menu{
+    justify-content: flex-end;
+    padding-right: 1rem;
+    padding-left: 1rem;
+}
+.main-nav-container .main-nav-menu .dropdown-menu{
+    /*left: unset;
+    right: 0;*/
+}
+
+.main-nav-container .main-nav-menu .navbar-nav{
+    align-items: center;
+}
+
+.main-nav-container .main-nav-menu .navbar-nav .nav-item{
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+.main-nav-container .main-nav-menu .nav-item.active .nav-link
+{
+    border-bottom: solid 1px #002469;
+    color: #002469;
+    font-weight: 700;
+}
+
+.main-nav-container .main-nav-menu .nav-item .nav-link{
+    font-weight: 500;
+}
+
+.main-nav-container .main-nav-menu .navbar-nav .nav-item .btn-container{
+    padding-left: 80px;
+    padding-right: 80px;
+}
+
+
+
+
+
+
+
+
+.response-container{
+  display: none;
+}
+
+.response-container ul{
+  padding: 0;
+  margin: 0;
+}
+.response-container ul li{
+  list-style-type: none;
+  color: #fff;
+  background-color: #DB2122;
+  padding: 10px 30px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+}
+
+.response-container p{
+  color: #fff;
+  background-color: #316300;
+  padding: 10px 30px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+}
+
+
+
+
+
+
+
+footer{
+    background-color: #FFF;
+    padding: 20px 0;
+}
+footer .footer-text{
+    font-size: 12px;
+    margin: 0;
+}
+
+
+
+
+
+/*///////////////////////////////////////////////*/
+
+
+
+
