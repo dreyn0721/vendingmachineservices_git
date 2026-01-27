@@ -138,18 +138,19 @@ include("init/main-functions.php");
 
 	    <div class="collapse navbar-collapse" id="navMenu">
 	      <ul class="navbar-nav ms-auto align-items-lg-center">
-	        <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+	        <li class="nav-item"><a class="nav-link" href="<?php echo $base_url; ?>">Home</a></li>
+	        <li class="nav-item"><a class="nav-link" href="<?php echo $base_url; ?>/blog.php">Blog</a></li>
 
 	        <li class="nav-item dropdown">
-	          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">About Us</a>
+	          <a class="nav-link dropdown-toggle" href="<?php echo $base_url; ?>" role="button" data-bs-toggle="dropdown" aria-expanded="false">About Us</a>
 	          <ul class="dropdown-menu">
-	            <li><a class="dropdown-item" href="#">Company</a></li>
-	            <li><a class="dropdown-item" href="#">Services</a></li>
+	            <li><a class="dropdown-item" href="<?php echo $base_url; ?>">Company</a></li>
+	            <li><a class="dropdown-item" href="<?php echo $base_url; ?>">Services</a></li>
 	          </ul>
 	        </li>
 
 	        <li class="nav-item ms-lg-3">
-	          <button class="btn btn-primary scroll-to-form">Reach Us Out</button>
+	          <a href="<?php echo $base_url; ?>#contactForm" class="btn btn-primary scroll-to-form">Reach Us Out</a>
 	        </li>
 	      </ul>
 	    </div>

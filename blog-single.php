@@ -183,12 +183,6 @@ body {
   color: var(--text);
 }
 
-/* ===== Container ===== */
-.container {
-  max-width: 900px;
-  margin: auto;
-  padding: 40px 20px 80px;
-}
 
 /* ===== Hero Image ===== */
 .hero-single {
@@ -429,6 +423,72 @@ h1 {
 .comment-form button:hover {
   transform: translateY(-2px);
   box-shadow: 0 10px 30px rgba(0,229,255,0.4);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+    .breadcrumbs {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.85rem;
+  padding: 14px 18px;
+  margin-bottom: 20px;
+  border-radius: 14px;
+  background: linear-gradient(
+    145deg,
+    rgba(255,255,255,0.14),
+    rgba(255,255,255,0.05)
+  );
+  backdrop-filter: blur(14px);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.35);
+}
+
+.breadcrumbs a {
+  color: var(--secondary);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: color 0.3s ease;
+}
+
+.breadcrumbs a:hover {
+  color: var(--primary);
+}
+
+.breadcrumbs span {
+  color: var(--muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 260px;
+}
+
+.breadcrumbs i.fa-chevron-right {
+  font-size: 0.7rem;
+  color: rgba(255,255,255,0.4);
+}
+
+/* Mobile */
+@media (max-width: 640px) {
+  .breadcrumbs {
+    font-size: 0.75rem;
+  }
+
+  .breadcrumbs span {
+    max-width: 160px;
+  }
 }
 
 

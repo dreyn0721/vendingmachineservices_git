@@ -109,7 +109,7 @@ include("template-parts/header.php");
   <div class="container">
     <h2 class="section-title text-center">Contact Us</h2>
 
-    <form class="row g-3 main-form">
+    <form class="row g-3 main-form" id="contactForm">
 
 
       <div class="response-container">
