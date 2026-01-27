@@ -1,53 +1,17 @@
-<?php include("init/database.php"); ?>
-<?php include("init/main-functions.php"); ?>
 <?php
 // Vars
 $page = "login";
 $pagetitle = "Login | Vending Machine Service";
 $description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum non euismod dolor. Integer sapien ipsum, dapibus eget bibendum sed nullam sodales.";
 
+
+include("template-parts/header-admin.php");
+
 if( logged_in() ){
   header("Location: dashboard.php");
 }
 
 ?>
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
-  <link href="assets/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
-  <script src="assets/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-  <script src="assets/js/jquery-3.7.1.min.js" crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="assets/font-awesome-4.7.0/css/font-awesome.min.css">
-
-
-  <link href="assets/main.css" rel="stylesheet" crossorigin="anonymous">
-
-  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
-    <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-
-  <meta name="description" content="<?=$description;?>">
-  <meta name="author" content="<?=$author;?>" />
-  <title><?=$pagetitle;?></title>
-</head>
-<body >
-
-  <header class="container-fluid p-0 mb-5">
-    
-    <div class="logo text-center pt-4 pb-4 bg-white">
-      <a class="navbar-brand" href="#">
-        <img src="assets/img/logoipsum-410.png">
-      </a>
-    </div>
-
-  </header>
-
-  <main class="main-content pt-5">
 
     <div class="login-container">
 
@@ -73,6 +37,30 @@ if( logged_in() ){
     </div>
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     <style>
 
       body {
@@ -88,7 +76,7 @@ if( logged_in() ){
         border-radius: 12px;
         box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
         text-align: center;
-        margin: 0 auto;
+        margin: 150px auto 0 auto;
       }
 
 
@@ -204,10 +192,4 @@ if( logged_in() ){
 
 
 
-
-
-
-
-
-  <?php include("template-parts/footer.php"); ?>
-
+<?php include("template-parts/footer-admin.php"); ?>

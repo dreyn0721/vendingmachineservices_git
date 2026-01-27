@@ -11,9 +11,14 @@ if( !logged_in() ){
 }
 ?>
 
+<div class="container">
+  x
+</div>
+
+
+<?php include("template-parts/footer-admin.php"); ?>
 
 
 
 
-<?php include("template-parts/footer.php"); ?>
 
