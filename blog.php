@@ -1,7 +1,7 @@
 <?php
 // Vars
 $page = "blogs";
-$pagetitle = "Blogs | AI consultation";
+$pagetitle = "Blogs | Vending Machine Service";
 $description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum non euismod dolor. Integer sapien ipsum, dapibus eget bibendum sed nullam sodales.";
 
 
@@ -197,7 +197,11 @@ body {
 }
 
 .blog-form .form-grid {
-  display: grid;
+/*  display: grid;*/
+
+  display: flex;
+  flex-direction: column;
+  
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 20px;
 }

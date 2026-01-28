@@ -6,8 +6,12 @@ $description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibu
 
 include("template-parts/header-admin.php");
 
-if( !logged_in() ){
-  header("Location: admin.php");
+if( !logged_in( "admin" ) ){
+  if( !logged_in() ){
+    header("Location: admin.php");
+  } else {
+    header("Location: ".$base_url );
+  }
 }
 ?>
 

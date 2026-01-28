@@ -6,7 +6,15 @@
 <?php
 // Vars
 
+
+if( $userdata['role'] == "admin" ){
+	$loc = $base_url."/admin.php";
+} else {
+	$loc = $base_url;
+}
+
+
 session_destroy();
-header("Location: admin.php");
+header("Location: ".$loc);
 
 ?>

@@ -28,19 +28,207 @@ if(isset($_SESSION['user_id']) && $_SESSION['user_id']){
 } else {
   $user_id = 0;
 
-
 }
 
 
 
 
-function logged_in(){
+function logged_in( $role = false ){
+  global $userdata;
+
   if(isset($_SESSION['user_id']) && $_SESSION['user_id']){
-    return true;
+
+    if( isset( $role ) && $role && $role == "admin" ){
+      if( isset( $userdata ) && is_array( $userdata ) && isset( $userdata['role'] ) && $userdata['role'] == "admin" ){
+        return true;
+      } else {
+        return false;
+      }
+
+    } else {
+      return true;
+    }
+    
   } else {
     return false;
   }
 }
+
+
+
+
+
+
+
+
+
+
+function email_exist( $email ){
+  global $conn;
+  $email_exist_query = mysqli_query($conn, "SELECT * FROM users WHERE email = '$email' ");
+
+    if( $email_exist_query->num_rows > 0 ){
+      return true;
+    } else {
+      return false;
+    }
+}
+
+function username_exist( $username ){
+  global $conn;
+  $username_exist_query = mysqli_query($conn, "SELECT * FROM users WHERE username = '$username' ");
+
+    if( $username_exist_query->num_rows > 0 ){
+      return true;
+    } else {
+      return false;
+    }
+}
+
+
+if( isset( $_POST['action'] ) && $_POST['action'] == "register" ){
+  $current_time = date('m/d/Y H:i:s');
+
+
+  $errors = [];
+
+  if( isset($_POST['firstname']) && $_POST['firstname'] ){
+    $firstname = $_POST['firstname'];
+  } else {
+    $errors[] = "Firstname is required";
+  }
+
+  if( isset($_POST['lastname']) && $_POST['lastname'] ){
+    $lastname = $_POST['lastname'];
+  } else {
+    $errors[] = "Lastname is required";
+  }
+
+  if( isset($_POST['email']) && $_POST['email'] ){
+    $email = $_POST['email'];
+
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+      $errors[] = "Invalid Email Format";
+    } else {
+      if( email_exist( $email ) ){
+        $errors[] = "Email is already taken";
+      }
+    }
+    
+
+  } else {
+    $errors[] = "Email is required";
+  }
+
+
+
+  if( isset($_POST['username']) && $_POST['username'] ){
+
+    $username = $_POST['username'];
+
+    if( username_exist( $username ) ){
+      $errors[] = "Username is already taken";
+    }
+
+  } else {
+    $errors[] = "Username is required";
+  }
+
+  if( isset($_POST['password']) && $_POST['password'] ){
+
+    if( isset($_POST['confirmpassword']) && $_POST['confirmpassword'] ){
+
+      if( $_POST['password'] == $_POST['confirmpassword'] ){
+
+        if( strlen( $_POST['password'] ) >= 8 ){
+          if( strlen( $_POST['password'] ) > 32 ){
+            $errors[] = "Password must not exceed 32 characters.";
+          } else {
+            $password = md5( $_POST['password'] );
+          }
+        } else {
+          $errors[] = "Password must be atleast 8 characters.";
+        }
+
+
+      } else {
+        $errors[] = "Password and confirm password doesn't match";
+      }
+      
+    } else {
+      $errors[] = "Confirm Password is required";
+    }
+
+  } else {
+    $errors[] = "Password is required";
+  }
+
+
+
+
+
+  if( isset( $errors ) && is_array( $errors ) && count( $errors ) > 0 ){
+    //make html error for return
+    $html = "<ul>";
+
+    foreach( $errors as $error ){
+      $html .= "<li>".$error."</li>";
+    }
+
+    $html .= "</ul>";
+
+    echo $html;
+    exit();
+  } else {
+    
+    $password = md5( $password );
+
+    $register_query = 
+      "
+      INSERT INTO users 
+      (
+        firstname, 
+        lastname,
+        username,
+        password,
+        email,
+        role,
+        datetimeinserted
+      ) 
+      VALUES 
+      (
+        '$firstname', 
+        '$lastname', 
+        '$username', 
+        '$password', 
+        '$email', 
+        'user', 
+        '$current_time'
+      )
+      ";
+
+    if (mysqli_query($conn, $register_query)) {
+        $last_id = mysqli_insert_id($conn);
+
+
+
+        $_SESSION['user_id'] = $last_id;
+        echo "success";
+        exit();
+    } else {
+      echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+      exit();
+    }
+
+
+  }
+
+
+  exit();
+}
+
+
+
 
 
 
