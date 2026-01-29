@@ -786,6 +786,8 @@ if( isset( $_POST['action'] ) && $_POST['action'] == "entry" ){
         email,
         zipcode,
         messagedata,
+        
+        posted_by_id,
         datetimeinserted
       ) 
       VALUES 
@@ -796,6 +798,8 @@ if( isset( $_POST['action'] ) && $_POST['action'] == "entry" ){
         '$email', 
         '$zipcode', 
         '$messagedata', 
+        
+        '$user_id',
         '$current_time'
       ) 
       ";

@@ -128,7 +128,7 @@ include("init/main-functions.php");
 	<!-- ===== Header / Navbar ===== -->
 	<nav class="navbar navbar-expand-lg fixed-top shadow-sm">
 	  <div class="container">
-	    <a class="navbar-brand" href="#">
+	    <a class="navbar-brand" href="<?php echo $base_url; ?>">
 	      <img src="https://dummyimage.com/200x80/000/fff&text=LOGO">
 	    </a>
 
@@ -138,7 +138,6 @@ include("init/main-functions.php");
 
 	    <div class="collapse navbar-collapse" id="navMenu">
 	      <ul class="navbar-nav ms-auto align-items-lg-center">
-	        <li class="nav-item"><a class="nav-link" href="<?php echo $base_url; ?>">Home</a></li>
 	        <li class="nav-item"><a class="nav-link" href="<?php echo $base_url; ?>/blog.php">Blog</a></li>
 
 	        <li class="nav-item dropdown">
