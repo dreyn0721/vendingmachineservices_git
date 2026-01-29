@@ -18,6 +18,8 @@ include("init/main-functions.php");
 
 	<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
 
+	
+
 
 	<meta name="description" content="<?=$description;?>">
 	<meta name="author" content="<?=$author;?>" />
