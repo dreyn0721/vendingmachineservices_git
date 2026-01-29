@@ -16,6 +16,10 @@ include("init/main-functions.php");
 
 	<link href="assets/main.css" rel="stylesheet" crossorigin="anonymous">
 
+
+	<link href="https://cdn.quilljs.com/1.3.7/quill.snow.css" rel="stylesheet">
+	<script src="https://cdn.quilljs.com/1.3.7/quill.min.js"></script>
+
 	<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
 
 	

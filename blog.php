@@ -51,41 +51,20 @@ include("template-parts/header.php");
     </div>
 
 
-    <textarea name="article_description" class="article-description" placeholder="Write your blog description..." rows="8"></textarea>
+    
+
+    <!-- <textarea id="blogEditor" name="article_description" class="article-description" placeholder="Write your blog description..." rows="15"></textarea> -->
+
+    <div class="container-fluid p-0 text-black" style="background: #fff; ">
+      <div id="editor-container"></div>
+    </div>
+
+
   </form>
   <button class=" article-submit-btn"><i class="fa fa-pencil-square-o"></i> Publish Post</button>
 </div>
 
 
-<script type="text/javascript">
-  const imageUpload = document.getElementById('imageUpload');
-  const imagePreview = document.getElementById('imagePreview');
-  const previewImg = document.getElementById('previewImg');
-  const uploadSpinner = document.getElementById('uploadSpinner');
-
-  imageUpload.addEventListener('change', () => {
-    const file = imageUpload.files[0];
-    if (!file) return;
-
-    // Show preview container + spinner
-    imagePreview.style.display = 'block';
-    uploadSpinner.style.display = 'flex';
-    previewImg.style.display = 'none';
-
-    const reader = new FileReader();
-
-    reader.onload = () => {
-      // Simulate realistic loading delay (optional but nice UX)
-      setTimeout(() => {
-        previewImg.src = reader.result;
-        uploadSpinner.style.display = 'none';
-        previewImg.style.display = 'block';
-      }, 600);
-    };
-
-    reader.readAsDataURL(file);
-  });
-</script>
 
 
 
@@ -197,11 +176,11 @@ body {
 }
 
 .blog-form .form-grid {
-/*  display: grid;*/
+  /*  display: grid;*/
 
   display: flex;
   flex-direction: column;
-  
+
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 20px;
 }
@@ -486,6 +465,25 @@ body {
 
 
 
+.article-form{
+  max-width: 100%;
+}
+
+
+
+
+
+ #editor-container {
+    height: 400px;
+  }
+  .article-description {
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+  }
+
+
+
+
 </style>
 
 
@@ -549,14 +547,23 @@ body {
 
 
       // Serialize the form data into a query string
-      var formDataString = jQuery(this).serialize();
+      // var formDataString = jQuery(this).serialize();
+
+
+      var formData = new FormData(this);
+
+
+       // Append Quill editor content as an extra field
+      var blogContent = jQuery('#editor-container .ql-editor').html();
+
+      formData.set('article_description', blogContent);
 
 
 
       jQuery.ajax({
         method: "POST",
         url: "<?php echo $base_url; ?>/blog.php",
-        data: new FormData(this),
+        data: formData,
         contentType: false,
         cache: false,
         processData:false,
@@ -612,5 +619,53 @@ body {
 
 
 </script>
+
+
+
+
+
+<script>
+
+  jQuery( document ).ready(function(){
+
+
+
+
+    // Initialize Quill editor
+    var quill = new Quill('#editor-container', {
+      theme: 'snow',
+      modules: {
+        toolbar: [
+          [{ header: [1, 2, 3, false] }],
+          ['bold', 'italic', 'underline', 'strike'],
+          [{ list: 'ordered' }, { list: 'bullet' }],
+          ['link'],
+          ['clean']
+        ],
+        clipboard: {
+          matchVisual: false // preserves formatting when pasting
+        }
+      }
+    });
+
+
+
+    //Save this for future post editing
+    var savedContent = '';
+
+    // Set the content into Quill editor
+    quill.root.innerHTML = savedContent;
+
+    // Optional: if you also want to set the hidden input for form submission
+    $('#blogContent').val(savedContent);
+
+
+  });
+
+  </script>
+
+
+
+
 
 <?php include("template-parts/footer.php"); ?>
