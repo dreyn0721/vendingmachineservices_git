@@ -487,6 +487,38 @@ body {
 </style>
 
 
+
+<script type="text/javascript">
+  const imageUpload = document.getElementById('imageUpload');
+  const imagePreview = document.getElementById('imagePreview');
+  const previewImg = document.getElementById('previewImg');
+  const uploadSpinner = document.getElementById('uploadSpinner');
+
+  imageUpload.addEventListener('change', () => {
+    const file = imageUpload.files[0];
+    if (!file) return;
+
+    // Show preview container + spinner
+    imagePreview.style.display = 'block';
+    uploadSpinner.style.display = 'flex';
+    previewImg.style.display = 'none';
+
+    const reader = new FileReader();
+
+    reader.onload = () => {
+      // Simulate realistic loading delay (optional but nice UX)
+      setTimeout(() => {
+        previewImg.src = reader.result;
+        uploadSpinner.style.display = 'none';
+        previewImg.style.display = 'block';
+      }, 600);
+    };
+
+    reader.readAsDataURL(file);
+  });
+</script>
+
+
 <script type="text/javascript">
   
   
